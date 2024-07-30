@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#chat-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+#messages {
+    border: 1px solid #ccc;
+    height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+#messages div {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+#typing {
+    font-style: italic;
+    color: gray;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+}
