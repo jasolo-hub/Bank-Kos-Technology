@@ -74,13 +74,18 @@ function initChat() {
         messages.scrollTop = messages.scrollHeight;
     });
 
-    chatSocket.on('chat history', (messages) => {
-        messages.forEach((message) => {
-            const msgElement = document.createElement('div');
-            msgElement.textContent = `${message.username}: ${message.message}`;
-            messages.appendChild(msgElement);
-        });
-        messages.scrollTop = messages.scrollHeight;
+    chatSocket.on('chat history', (messagesData) => {
+        console.log('Received chat history:', messagesData); // Debugging log
+        if (Array.isArray(messagesData)) {
+            messagesData.forEach((message) => {
+                const msgElement = document.createElement('div');
+                msgElement.textContent = `${message.username}: ${message.message}`;
+                messages.appendChild(msgElement);
+            });
+            messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
+        } else {
+            console.error('Invalid messages data:', messagesData);
+        }
     });
 
     chatSocket.on('typing', (username) => {

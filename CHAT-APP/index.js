@@ -88,7 +88,8 @@ io.on('connection', async (socket) => {
 
     try {
         // Load previous messages
-        const messages = await Message.find().sort({ timestamp: 1 }).limit(50).exec();
+        const messages = await Message.find().limit(50);
+        console.log(JSON.stringify(messages))
         socket.emit('chat history', messages);
     } catch (err) {
         console.error('Error loading chat history:', err);
